@@ -27,3 +27,7 @@ __pycache__/
 venv/
 .coverage
 htmlcov/
+
+# Quarto
+course/_site/
+course/.quarto/
