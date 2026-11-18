@@ -26,9 +26,11 @@ def run(command: list[str], *, cwd: Path = ROOT) -> None:
 
 
 def gradle_command() -> list[str]:
+    # Absolute path: some Windows shells disable lookup in the current
+    # directory (NoDefaultCurrentDirectoryInExePath).
     if os.name == "nt":
-        return ["cmd", "/c", "gradlew.bat"]
-    return ["./gradlew"]
+        return ["cmd", "/c", str(CAR_SERVICE / "gradlew.bat")]
+    return [str(CAR_SERVICE / "gradlew")]
 
 
 def test_java() -> None:
